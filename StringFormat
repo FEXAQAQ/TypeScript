@@ -1,0 +1,17 @@
+#讓Ts用起來有Stringformat的感覺
+
+//EX: str: "獲得{0}元"
+//    replace string: "8"
+//    
+//Use: StringFormat(str,replace)
+//
+//Output: "獲得8元"
+
+StringFormat(str,replace)
+
+public static StringFormat(str: string, ...val: string[]){
+    for (let index = 0; index < val.length; index++){
+        str = str.replace(`{${index}}`, val[index]);
+      }
+    return str;
+}
