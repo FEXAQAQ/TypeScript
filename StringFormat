@@ -1,5 +1,7 @@
 #讓Ts用起來有Stringformat的感覺
 
+#v1
+
 //EX: str: "獲得{0}元"
 //    replace string: "8"
 //    
@@ -13,5 +15,22 @@ public static StringFormat(str: string, ...val: string[]){
     for (let index = 0; index < val.length; index++){
         str = str.replace(`{${index}}`, val[index]);
       }
+    return str;
+}
+
+
+#v2
+
+this.alertw(StringFormat(false,this.textTips[1],string1));
+
+/**isOpen = true 忽略 空格 & 空字串 */
+public static StringFormat(isOpen: boolean, str: string, ...val: string[]){
+    for (let index = 0; index < val.length; index++){
+        if(isOpen && ( 0 === val[index].trim().length)){
+            continue;
+        } else {
+            str = str.replace(`{${index}}`, val[index]);
+        }
+    }
     return str;
 }
